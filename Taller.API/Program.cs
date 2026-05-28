@@ -1,3 +1,6 @@
+using Microsoft.EntityFrameworkCore;
+using Taller.CORE.Infrastructure.Data;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.

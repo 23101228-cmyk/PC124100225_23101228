@@ -1,3 +1,4 @@
 <Solution>
   <Project Path="Taller.API/Taller.API.csproj" />
+  <Project Path="Taller.CORE/Taller.CORE.csproj" />
 </Solution>
