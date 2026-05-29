@@ -1,0 +1,106 @@
+{
+  "info": {
+    "_postman_id": "e2532eba-fd2c-4482-b41b-a9643026989e",
+    "name": "PC1",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "54272565",
+    "_collection_link": "https://go.postman.co/collection/54272565-e2532eba-fd2c-4482-b41b-a9643026989e?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Tip_Servicio_Get",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "https://localhost:7044/api/TipoServicios",
+          "protocol": "https",
+          "host": [
+            "localhost"
+          ],
+          "port": "7044",
+          "path": [
+            "api",
+            "TipoServicios"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Tip_Servicio_POST",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"nombre\": \"Cambio de aceite\",\r\n  \"precioBase\": 80\r\n}\r\n\r\n",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "https://localhost:7044/api/TipoServicios",
+          "protocol": "https",
+          "host": [
+            "localhost"
+          ],
+          "port": "7044",
+          "path": [
+            "api",
+            "TipoServicios"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "TipoServicioPut",
+      "request": {
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"id\": 1,\r\n  \"nombre\": \"Cambio de aceite premium\",\r\n  \"precioBase\": 120\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "https://localhost:7044/api/TipoServicios/1",
+          "protocol": "https",
+          "host": [
+            "localhost"
+          ],
+          "port": "7044",
+          "path": [
+            "api",
+            "TipoServicios",
+            "1"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "TipoServicioGET",
+      "request": {
+        "method": "GET",
+        "header": []
+      },
+      "response": []
+    },
+    {
+      "name": "New Request",
+      "request": {
+        "method": "GET",
+        "header": []
+      },
+      "response": []
+    }
+  ]
+}
