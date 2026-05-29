@@ -8,10 +8,7 @@
 
   <ItemGroup>
     <Folder Include="CORE\Entities\" />
-    <Folder Include="CORE\Interfaces\" />
     <Folder Include="CORE\DTOs\" />
-    <Folder Include="Infraestructura\Data\" />
-    <Folder Include="Infraestructura\Repositories\" />
   </ItemGroup>
 
   <ItemGroup>

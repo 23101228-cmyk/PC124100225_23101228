@@ -3,15 +3,15 @@ using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using Taller.CORE.Core.Entities;
 
-namespace Taller.CORE.Infrastructure.Data;
+namespace Taller.CORE.Infraestructura.Data;
 
-public partial class UniversidadDbContext : DbContext
+public partial class TallerMecanicoDbContext : DbContext
 {
-    public UniversidadDbContext()
+    public TallerMecanicoDbContext()
     {
     }
 
-    public UniversidadDbContext(DbContextOptions<UniversidadDbContext> options)
+    public TallerMecanicoDbContext(DbContextOptions<TallerMecanicoDbContext> options)
         : base(options)
     {
     }
