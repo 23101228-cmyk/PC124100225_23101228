@@ -1,0 +1,29 @@
+a. Durante el proceso de scaffolding con Entity Framework Core, pueden surgir las siguientes dificultades:
+- Cadena de conexión incorrecta: Si la cadena en appsettings.json apunta a un servidor o base de datos inexistente, el comando Scaffold-DbContext falla. Solución: verificar el servidor SQL, el nombre de la BD y que Windows Authentication esté habilitado.
+- Conflictos de namespaces: Al generar las entidades en un proyecto separado (Core), EF Core puede no resolver correctamente los namespaces. Solución: especificar explícitamente --context-dir y --output-dir en el comando de scaffold.
+- Tablas sin clave primaria: EF Core no puede generar entidades para tablas sin PK. Solución: asegurarse de que todas las tablas tengan PRIMARY KEY definida en el script SQL antes de hacer scaffold.
+- Versiones incompatibles: EF Core tools desalineadas con el paquete EF Core. Solución: usar la misma versión (ej. 8.0.0) en todos los paquetes NuGet.
+b.
+Controlador Autogenerado:
+- Accede directamente al DbContext desde el controlador.
+- Código más simple y rápido de generar, ideal para prototipos.
+- Difícil de testear unitariamente porque el controlador tiene dependencia directa de la BD.
+- Viola el principio de separación de responsabilidades (SRP).
+Controlador con Repository e Interface:
+- El controlador solo conoce la interfaz (IOrdenServicioService), no la implementación concreta.
+- Permite inyección de dependencias real: en pruebas se puede inyectar un mock.
+- La lógica de negocio queda en el servicio (Infrastructure), separada de la capa de presentación.
+- Mayor mantenibilidad: cambiar la BD o el ORM no afecta al controlador.
+c.
+- DTOs separados de las entidades: evita exponer el modelo de dominio directamente en la API y protege contra over-posting.
+- Interfaces en la capa Core: IOrdenServicioRepository e IOrdenServicioService definen contratos desacoplados de la implementación.
+- Inyección de dependencias vía constructor: ninguna clase instancia sus propias dependencias; todo se resuelve en Program.cs.
+-	Respuestas HTTP semánticamente correctas: 200 OK para consultas, 201 Created para inserciones, 204 NoContent para eliminaciones, 404 NotFound cuando no existe el recurso.
+-	Async/Await en todos los métodos de acceso a datos: mejora la escalabilidad evitando bloqueos de hilos.
+-	Partial classes en entidades: permite agregar lógica de negocio sin modificar el archivo generado por scaffold.
+d.
+En esta práctica se utilizó IA como apoyo para entender la estructura de la solución y validar buenas prácticas. Su uso es válido siempre que el alumno comprenda el código generado y pueda explicarlo y defenderlo. Las herramientas de IA aceleran el desarrollo pero no reemplazan el entendimiento conceptual de la arquitectura.
+e. 
+- TallerMecanico.Core: Entidades (generadas por Scaffold), Interfaces (IOrdenServicioRepository, IOrdenServicioService) y DTOs.
+-	TallerMecanico.Infrastructure: DbContext (TallerMecanicoContext), Repositorios (OrdenServicioRepository) y Servicio (OrdenServicioService) con la lógica de negocio.
+-	TallerMecanico.API: Controladores (OrdenServicioController con [ApiController], TipoServicioController) y Program.cs con el registro de dependencias.
